@@ -9,8 +9,8 @@
 require_once __DIR__.'/server.php';
 
 // include our LDAP object
-require_once __DIR__.'/LDAP/LDAP.php';
-require_once __DIR__.'/LDAP/config_ldap.php';
+// require_once __DIR__.'/LDAP/LDAP.php';
+// require_once __DIR__.'/LDAP/config_ldap.php';
 
 // Handle a request to a resource and authenticate the access token
 if (!$server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
