@@ -47,10 +47,30 @@ else
     }
     else
        {
+        // Remove every html tag and useless space on username (to prevent XSS)
+        $user=strtolower(strip_tags(htmlspecialchars(trim($_POST['user']))));
+        $password=$_POST['password'];
 
-        $url = 'https://intranet.hka-iwi.de/iwii/REST/credential/v2/info';
-        $username = $_POST['user'];
-        $password = $_POST['password'];
+        // Authentifizierung über RaumZeit
+        $url = "https://raumzeit.hka-iwi.de/api/v1/authentication";
+
+        $body = json_encode(array("login" => $user, "password" => $password));
+
+        $headers = array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($body)
+        );
+
+        $curl = curl_init($url);
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        // Alternativ über GET Methode aus dem Intranet
+        /*$url = 'https://intranet.hka-iwi.de/iwii/REST/credential/v2/info';
 
         // Initialize cURL
         $curl = curl_init($url);
@@ -58,14 +78,14 @@ else
         // Set options
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
+        curl_setopt($curl, CURLOPT_USERPWD, "$user:$password");*/
 
         // Execute cURL request
         $response = curl_exec($curl);
         $status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         // Check for errors
-        if($status_code == 401) {
+        if($status_code == 401 || $status_code == 403) {
             $error = curl_error($curl);
             $authenticated = false;
         } else if($status_code == 200) {
@@ -75,10 +95,6 @@ else
 
         // Close cURL session
         curl_close($curl);
-
-           // Remove every html tag and useless space on username (to prevent XSS)
-        //$user=strtolower(strip_tags(htmlspecialchars(trim($_POST['user']))));
-        //$password=$_POST['password'];
 
         // Open a LDAP connection
         //$ldap = new LDAP($ldap_host,$ldap_port,$ldap_version,$ldap_start_tls);
@@ -95,7 +111,7 @@ else
         // If user is authenticated
         if ($authenticated)
         {
-            $_SESSION['uid']=$username;
+            $_SESSION['uid']=$user;
 
             // If user came here with an autorize request, redirect him to the authorize page. Else prompt a simple message.
             if (isset($_SESSION['auth_page']))
