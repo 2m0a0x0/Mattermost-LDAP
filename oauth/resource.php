@@ -27,16 +27,16 @@ $user = $info_oauth["user_id"];
 $assoc_id = intval($info_oauth["assoc_id"]);
 
 // Open a LDAP connection
-$ldap = new LDAP($ldap_host, $ldap_port, $ldap_version, $ldap_start_tls);
+//$ldap = new LDAP($ldap_host, $ldap_port, $ldap_version, $ldap_start_tls);
 
 // Try to get user data on the LDAP
 try {
-    $data = $ldap->getDataForMattermost($ldap_base_dn, $ldap_filter, $ldap_bind_dn, $ldap_bind_pass, $ldap_search_attribute, $user);
+    //$data = $ldap->getDataForMattermost($ldap_base_dn, $ldap_filter, $ldap_bind_dn, $ldap_bind_pass, $ldap_search_attribute, $user);
 
     // Here is the patch for Mattermost 4.4 and newer. Gitlab has changed the JSON output of oauth service. Many data are not used by Mattermost, but there is a stack error if we delete them. That's the reason why date and many parameters are null or empty.
     $resp = array(
 	"id" => $assoc_id,
-	"name" => strlen($data['displayName']) > 0 ? $data['displayName'] : $data['cn'],
+	"name" => $user,
 	"username" => $user,
 	"state" => "active",
 	"avatar_url" => "",
@@ -52,15 +52,15 @@ try {
 	"last_sign_in_at" => "0000-00-00T00:00:00.000Z",
 	"confirmed_at" => "0000-00-00T00:00:00.000Z",
 	"last_activity_on" => null,
-	"email" => $data['mail'],
+	"email" => $user . "@h-ka.de",
 	"theme_id" => 1,
 	"color_scheme_id" => 1,
 	"projects_limit" => 100000,
 	"current_sign_in_at" => "0000-00-00T00:00:00.000Z",
 	"identities" => array(
 	    array(
-		"provider" => "ldapmain",
-		"extern_uid" => $data['cn']
+		"provider" => null,
+		"extern_uid" => null
 	    )
 	),
 	"can_create_group" => true,
