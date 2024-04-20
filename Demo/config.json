@@ -334,7 +334,7 @@
         "TokenEndpoint": "http://webserver/oauth/token.php",
         "UserAPIEndpoint": "http://webserver/oauth/resource.php",
         "DiscoveryEndpoint": "",
-        "ButtonText": "",
+        "ButtonText": "Login",
         "ButtonColor": ""
     },
     "GoogleSettings": {
