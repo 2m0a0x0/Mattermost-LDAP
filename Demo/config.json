@@ -334,7 +334,7 @@
         "TokenEndpoint": "http://webserver/oauth/token.php",
         "UserAPIEndpoint": "http://webserver/oauth/resource.php",
         "DiscoveryEndpoint": "",
-        "ButtonText": "Login",
+        "ButtonText": "Login with RZ-Account",
         "ButtonColor": ""
     },
     "GoogleSettings": {
@@ -583,7 +583,7 @@
         "ClientDirectory": "./client/plugins",
         "Plugins": {
             "playbooks": {
-                "BotUserID": "yq6kuokdpi8jtnc9rctub6wnfw"
+                "BotUserID": "fc9a6qp6xt8txj1cmif34zxjxa"
             }
         },
         "PluginStates": {
