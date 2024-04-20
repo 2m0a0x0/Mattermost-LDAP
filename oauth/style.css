@@ -6,6 +6,7 @@
     --deny_bg: #cc1f1f;
     --deny_hover: #e24040;
     --icon_color:#6b6b6b;
+    --hka-red: #D72305;
 }
 
 html {
@@ -23,7 +24,7 @@ html {
 /* Style the form wrapper */
 body {
     /* Set custom font */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     margin: auto;
     text-align: center;
 }
@@ -37,22 +38,14 @@ table {
 }
 
 /* Format the different images*/
-#form_icon,
 #form_icon_prompt {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-}
-
-#form_icon img {
-    width: 100%;
-    max-width: 150px;
 }
 
 #form_icon_prompt img {
-    width: 50%;
-    max-width: 150px;
+    width: 70%;
 }
 
 
@@ -68,11 +61,11 @@ table {
 
 /* Style input fields */
 .input_container {
-    background-color: var(--input_bg);
     /* Vertically align icon and text inside the div*/
     display: flex;
     align-items: center;
     padding-left: 20px;
+    border: solid 1px #d5d5d5;
 }
 
 .input_container:hover {
@@ -86,7 +79,7 @@ table {
     height: 60px;
 
     /* Make the borders more round */
-    border-radius: 5px;
+    border-radius: 2px;
     width: 100%;
 }
 
@@ -111,7 +104,7 @@ table {
 #input_deny,
 #input_login {
     /* Submit button has a different color and different padding */
-    background-color: var(--accept_bg);
+    background-color: var(--hka-red);
     padding-left: 0;
     font-weight: bold;
     color: white;
@@ -121,6 +114,10 @@ table {
     margin-top: 10%;
     margin-right: 2%;
     width: 50%;
+}
+
+#input_accept {
+    background-color: var(--accept_bg) !important;
 }
 
 #input_accept:hover,
@@ -147,8 +144,7 @@ table {
 
 /* Format the error messages */
 .err_msg {
-    color: red;
-    font-weight: bold;
+    color: rgb(255, 120, 120);
     font-size: 110%;
 }
 
@@ -159,8 +155,7 @@ span {
     text-align: center;
     padding-bottom: 2%;
     padding-top: 0%;
-    font-weight: bolder;
-    font-size: 300%;
+    font-size: 200%;
 }
 
 
@@ -189,7 +184,7 @@ button {
     width: auto;
 }
 button.link {
-    font-family: "Verdana" sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 2pt;
     text-align: left;
     color: blue;

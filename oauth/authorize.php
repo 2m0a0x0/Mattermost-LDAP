@@ -57,10 +57,7 @@ else if (empty($_POST)) {
     <body>
         <div id="form-wrapper" style="text-align: center;">
             <div id="form_credentials">
-                <h1>LDAP Authentication</h1>
-                <div id="form_icon">
-                <img src="./images/auth_icon.png" alt="authentication icon" >
-                </div>
+                <h1>HKA Authorization</h1>
                 <br>
                 <h2>Authorize Mattermost to get the following data:</h2>
                 <table>
@@ -77,7 +74,7 @@ else if (empty($_POST)) {
                 <br/>
 
                 <form method="POST">
-                    <input type="submit" value="Authorize" name="authorized" id="input_accept" class="input_field">
+                    <input type="submit" value="Authorize" name="authorized" id="input_accept" class="input_field" autofocus>
                     <input type="submit" value="Deny" name="authorized" id="input_deny" class="input_field">
                 </form>
             </div>

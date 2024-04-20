@@ -28,11 +28,15 @@ function messageShow($html_template, $message = 'No Msg') {
 // Verify all fields have been filled
 if (empty($_POST['user']) || empty($_POST['password']))
 {
-    if (empty($_POST['user'])) {
-        messageShow($prompt_template, 'Username field can\'t be empty.');
-    } else {
-        messageShow($prompt_template, 'Password field can\'t be empty.');
-    }
+    if (isset($_POST['user'])) {
+		if (empty($_POST['user'])) {
+			messageShow($prompt_template, 'Username field can\'t be empty.');
+		} else {
+			messageShow($prompt_template, 'Password field can\'t be empty.');
+		}
+	} else {
+		messageShow($prompt_template, '');
+	}
 }
 else
 {
