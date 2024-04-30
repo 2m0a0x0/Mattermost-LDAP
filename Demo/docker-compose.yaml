@@ -57,3 +57,5 @@ services:
             - dockerhost:127.0.0.1
         volumes:
             - ./config.json:/mm/mattermost/config/config_docker.json
+            - ./updater.sh:/mm/updater.sh
+            - ./emailUpdater.sh:/mm/emailUpdater.sh
