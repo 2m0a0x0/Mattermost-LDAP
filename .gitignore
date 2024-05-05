@@ -2,3 +2,4 @@ config_init.sh
 data
 certs
 
+Demo/.env

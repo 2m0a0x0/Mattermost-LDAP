@@ -251,8 +251,8 @@
         "ExportAmazonS3PresignExpiresSeconds": 21600
     },
     "EmailSettings": {
-        "EnableSignUpWithEmail": false,
-        "EnableSignInWithEmail": false,
+        "EnableSignUpWithEmail": true,
+        "EnableSignInWithEmail": true,
         "EnableSignInWithUsername": false,
         "SendEmailNotifications": true,
         "UseChannelInEmailNotifications": false,
@@ -583,7 +583,7 @@
         "ClientDirectory": "./client/plugins",
         "Plugins": {
             "playbooks": {
-                "BotUserID": "fc9a6qp6xt8txj1cmif34zxjxa"
+                "BotUserID": "njju1xq55fr93jg7gyrxnwkjwa"
             }
         },
         "PluginStates": {

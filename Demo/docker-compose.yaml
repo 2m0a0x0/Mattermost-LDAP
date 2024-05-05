@@ -17,6 +17,8 @@ services:
         image: php-ldap-pgsql
         volumes:
             - ../oauth:/var/www/html/oauth
+        env_file:
+            - .env
         environment:
             db_host: "database"
             db_port: "5432"
@@ -24,6 +26,7 @@ services:
             db_name: "oauth_db"
             db_user: "oauth"
             db_pass: "oauth_secure-pass"
+            BEARER: ${BEARER}
         depends_on:
             - database
 

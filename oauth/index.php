@@ -55,6 +55,8 @@ else
         $user=strtolower(strip_tags(htmlspecialchars(trim($_POST['user']))));
         $password=$_POST['password'];
 
+        $token = getenv('BEARER');
+
         // Authentifizierung über RaumZeit
         $url = "https://raumzeit.hka-iwi.de/api/v1/authentication";
 
@@ -62,7 +64,8 @@ else
 
         $headers = array(
             'Content-Type: application/json',
-            'Content-Length: ' . strlen($body)
+            'Content-Length: ' . strlen($body),
+            'Authorization: Bearer ' . $token
         );
 
         $curl = curl_init($url);
