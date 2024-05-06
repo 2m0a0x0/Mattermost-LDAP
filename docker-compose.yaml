@@ -18,15 +18,6 @@ services:
         volumes:
             - ./oauth:/var/www/html/oauth
         environment:
-            ldap_host: ldap://ldap.company.com:389/
-            ldap_port: 389
-            ldap_version: 3
-            ldap_start_tls: 0
-            ldap_search_attribute: uid
-            ldap_base_dn: "ou=People,o=Company"
-            ldap_filter: "(objectClass=*)"
-            ldap_bind_dn: ""
-            ldap_bind_pass: ""
             db_host: "database"
             db_port: "5432"
             db_type: "pgsql"
